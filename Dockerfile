@@ -7,6 +7,10 @@ ENV PANDOC_VERSION "2.5-3build2"
 
 RUN apt-get update && \
     apt-get install -y \
-        texlive \
+        texlive-latex-base \
+        texlive-latex-extra \
+        texlive-science \
+        texlive-fonts-extra \
+        texlive-bibtex-extra \
         pandoc=${PANDOC_VERSION} \
         pandoc-citeproc
