@@ -11,9 +11,6 @@ RUN apt-get update && \
         texlive-latex-extra \
         texlive-science \
         texlive-fonts-extra \
-        texlive-bibtex-extra
-
-RUN cabal update && \
-    cabal install \
-        pandoc-${PANDOC_VERSION} \
+        texlive-bibtex-extra \
+        pandoc=${PANDOC_VERSION} \
         pandoc-citeproc
