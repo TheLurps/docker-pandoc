@@ -29,7 +29,7 @@ jobs:
     name: Test
     needs: build
     runs-on: ubuntu-latest
-    container: ${{ env.IMAGE }}
+    container: ${{ IMAGE }}
     steps:
       - uses: actions/checkout@v2
       - name: Render
