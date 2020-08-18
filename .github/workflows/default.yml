@@ -25,7 +25,7 @@ jobs:
           tag_with_ref: true
           tag_with_sha: true
           cache_froms: thelurps/pandoc:latest, thelurps/pandoc:dev
-      - name: $IMAGE
+      - name: $GITHUB_SHA
         run: |
           echo $IMAGE
           echo $GITHUB_SHA
