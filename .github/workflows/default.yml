@@ -26,9 +26,13 @@ jobs:
           tag_with_sha: true
           cache_froms: thelurps/pandoc:latest, thelurps/pandoc:dev
       - name: $IMAGE
-        run: echo $IMAGE
+        run: |
+          echo $IMAGE
+          echo $GITHUB_SHA
       - name: ${IMAGE}
-        run: ${IMAGE}
+        run: |
+          echo ${IMAGE}
+          echo ${GITHUB_SHA}
   test:
     name: Test
     needs: build
