@@ -8,6 +8,7 @@ ENV PANDOC_VERSION "2.10.1"
 RUN apt-get update && \
     apt-get install -y \
         texlive-latex-base \
+        texlive-latex-extra \
         texlive-science \
         texlive-fonts-extra \
         texlive-bibtex-extra
