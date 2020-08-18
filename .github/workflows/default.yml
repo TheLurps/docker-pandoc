@@ -24,8 +24,10 @@ jobs:
           repository: thelurps/pandoc
           tag_with_ref: true
           tag_with_sha: true
+      - run: echo $IMAGE
+      - run: echo ${IMAGE}
   test:
-    name: Test $IMAGE
+    name: Test ${IMAGE}
     needs: build
     runs-on: ubuntu-latest
     container: $IMAGE
