@@ -1,9 +1,9 @@
-FROM haskell:8.10.2
+FROM ubuntu:focal
 
 MAINTAINER Joshua Schraven <joshua@schraven.email>
 
 ENV DEBIAN_FRONTEND=noninteractive
-ENV PANDOC_VERSION "2.10.1"
+ENV PANDOC_VERSION "2.5-3build2"
 
 RUN apt-get update && \
     apt-get install -y \
