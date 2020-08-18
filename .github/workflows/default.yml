@@ -1,13 +1,13 @@
 name: Build image and test container
 
 on:
-  workflow_dispatch:
   push:
     branches:
       - main
       - dev
     paths:
       - Dockerfile
+  workflow_dispatch:
 
 jobs:
   build:
@@ -28,7 +28,7 @@ jobs:
     name: Test images by rendering README
     needs: build
     runs-on: ubuntu-latest
-    container: thelurps/pandoc:sha-${GITHUB_SHA::7}
+    container: thelurps/pandoc:sha-${GITHUB_SHA:0:7}
     steps:
       - uses: actions/checkout@v2
       - name: Render
