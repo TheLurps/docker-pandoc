@@ -1,12 +1,6 @@
 name: Build image and test container
 
 on:
-  push:
-    branches:
-      - main
-      - dev
-    paths:
-      - Dockerfile
   workflow_dispatch:
 
 jobs:
