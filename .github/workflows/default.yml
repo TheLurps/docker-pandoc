@@ -9,7 +9,6 @@ on:
 
 jobs:
   build:
-    name: Build and push image
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -23,10 +22,11 @@ jobs:
           tag_with_ref: true
           tag_with_sha: true
   test:
-    name: Test images by rendering README
     needs: build
+    env:
+      IMAGE: ${{ secrets.DOCKER_USERNAME }}/pandoc:sha-${GITHUB_SHA:0:7}
     runs-on: ubuntu-latest
-    container: thelurps/pandoc:sha-${GITHUB_SHA:0:7}
+    container: $IMAGE
     steps:
       - uses: actions/checkout@v2
       - name: Render
