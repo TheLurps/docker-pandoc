@@ -26,7 +26,7 @@ jobs:
     name: Test images by rendering README
     needs: build
     runs-on: ubuntu-latest
-    container: thelurps/pandoc:sha-${GITHUB_SHA::8}
+    container: thelurps/pandoc:sha-${GITHUB_SHA::7}
     steps:
       - uses: actions/checkout@v2
       - name: Render
