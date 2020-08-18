@@ -1,9 +1,8 @@
-name: Build image and test container
+name: Build and test dev
 
 on:
   push:
     branches:
-      - main
       - dev
     paths:
       - Dockerfile
