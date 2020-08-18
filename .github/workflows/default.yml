@@ -26,7 +26,7 @@ jobs:
     name: Test
     needs: build
     runs-on: ubuntu-latest
-    container: ${{ secrets.DOCKER_USERNAME }}/pandoc:sha-${{ GITHUB_SHA }}
+    container: thelurps/pandoc:sha-${{ GITHUB_SHA }}
     steps:
       - uses: actions/checkout@v2
       - name: Render
