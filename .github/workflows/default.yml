@@ -25,11 +25,15 @@ jobs:
           tag_with_ref: true
           tag_with_sha: true
           cache_froms: thelurps/pandoc:latest, thelurps/pandoc:dev
+      - name: $IMAGE
+        run: echo $IMAGE
+      - name: ${IMAGE}
+        run: ${IMAGE}
   test:
     name: Test
     needs: build
     runs-on: ubuntu-latest
-    container: ${{ IMAGE }}
+    container: thelurps/pandoc:dev
     steps:
       - uses: actions/checkout@v2
       - name: Render
