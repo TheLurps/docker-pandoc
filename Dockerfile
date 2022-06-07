@@ -13,4 +13,5 @@ RUN apt-get update && \
         texlive-fonts-extra \
         texlive-bibtex-extra \
         pandoc=${PANDOC_VERSION} \
-        pandoc-citeproc
+        pandoc-citeproc \
+        git
