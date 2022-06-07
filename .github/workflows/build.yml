@@ -1,12 +1,11 @@
-name: Build and test dev
+name: Build and test
 
 on:
   push:
     branches:
-      - dev
-    paths:
-      - Dockerfile
-  workflow_dispatch:
+      - '*'
+    tags:
+      - 'v*'
 
 jobs:
   build:
@@ -23,7 +22,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: thelurps/pandoc:testing
+          tags: thelurps/pandoc:$GITHUB_REF_NAME
   test:
     needs: build
     runs-on: ubuntu-latest
