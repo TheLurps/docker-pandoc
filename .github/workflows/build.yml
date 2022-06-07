@@ -26,11 +26,11 @@ jobs:
   test:
     needs: build
     runs-on: ubuntu-latest
-    container: thelurps/pandoc:testing
+    container: thelurps/pandoc:${{github.ref_name}}
     steps:
       - uses: actions/checkout@v2
       - name: Render
-        run: pandoc README.md -o README.pdf
+        run: pandoc README.md -o README-$(git describe --tags --dirty --always).pdf
       - uses: actions/upload-artifact@master
         with:
-          path: README.pdf
+          path: 'README-*.pdf'
