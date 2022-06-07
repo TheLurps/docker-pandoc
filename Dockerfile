@@ -1,9 +1,9 @@
-FROM ubuntu:focal
+FROM ubuntu:jammy
 
 MAINTAINER Joshua Schraven <joshua@schraven.email>
 
 ENV DEBIAN_FRONTEND=noninteractive
-ENV PANDOC_VERSION "2.5-3build2"
+ENV PANDOC_VERSION "2.9.2.1-3ubuntu2"
 
 RUN apt-get update && \
     apt-get install -y \
