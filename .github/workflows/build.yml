@@ -22,7 +22,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: thelurps/pandoc:${{github.ref.name}}
+          tags: thelurps/pandoc:${{github.ref_name}}
   test:
     needs: build
     runs-on: ubuntu-latest
