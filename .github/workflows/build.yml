@@ -30,7 +30,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Render
-        run: pandoc README.md -o README-$(git describe --tags --dirty --always).pdf
+        run: |
+          git config --global --add safe.directory /__w/docker-pandoc/docker-pandoc
+          pandoc README.md -o README-$(git describe --tags --dirty --always).pdf
       - uses: actions/upload-artifact@master
         with:
           path: 'README-*.pdf'
