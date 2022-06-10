@@ -31,11 +31,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Render
-        run: |
-          pandoc metadata.yml README.md \
-            --filter pandoc-citeproc \
-            --bibliography=./references.bib \
-            --output=README-$(git describe --tags --dirty --always).pdf
+        run: make README.pdf
       - uses: actions/upload-artifact@master
         with:
-          path: 'README-*.pdf'
+          path: 'README.pdf'
