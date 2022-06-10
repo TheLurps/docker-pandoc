@@ -1,2 +1,26 @@
 # docker-pandoc
-Massively bloated pandoc docker image 
+
+A docker image for generating PDFs from Markdown using Pandoc and TexLive
+
+An unordered listing:
+
+- item a
+- item b
+- item c
+
+A ordered listing:
+
+1. item a
+1. item b
+1. item c
+
+Some code:
+
+```python
+for e in elements:
+    print(e)
+```
+
+This is a sample citation @dominici2014overview.
+
+## References
