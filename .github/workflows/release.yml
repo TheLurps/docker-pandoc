@@ -7,6 +7,11 @@ on:
       - 'testing'
     tags:
       - 'v*'
+    paths:
+      - 'Dockerfile'
+      - 'Makefile'
+      - '.github/workflows/release.yml'
+  workflow_dispatch:
 
 jobs:
   build:
@@ -37,4 +42,4 @@ jobs:
       - uses: actions/upload-artifact@master
         with:
           name: 'rendered_pdf-${{ env.VERSION }}'
-          path: 'README-${{ env.VERSION }}.pdf'
+          path: '*-${{ env.VERSION }}.pdf'
