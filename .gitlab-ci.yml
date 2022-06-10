@@ -1,11 +1,9 @@
-test:
-  image: thelurps/pandoc:testing
+build:
+  image: thelurps/pandoc:latest
   script:
     - make all
   variables:
     VERSION: $CI_COMMIT_SHA 
   artifacts:
-    untracked: false
-    expire_in: 30 days
     paths:
-      - "README-$VERSION.pdf"
+      - "*-$VERSION.pdf"
