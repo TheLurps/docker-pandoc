@@ -1,6 +1,6 @@
 # docker-pandoc
 
-A docker image for generating PDFs from Markdown using Pandoc and TexLive
+A docker image for generating PDFs from Markdown using Pandoc and Miktex
 
 An unordered listing:
 
