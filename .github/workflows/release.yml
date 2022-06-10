@@ -30,14 +30,11 @@ jobs:
     container: thelurps/pandoc:${{github.ref_name}}
     steps:
       - uses: actions/checkout@v2
-      - name: Git describe
-        id: ghd
-        uses: proudust/gh-describe@v1
       - name: Render
         run: |
           make README.pdf && \
-            mv -v README.pdf README-${{ steps.ghd.outputs.describe }}.pdf
+            mv -v README.pdf README-${{ github.sha }}.pdf
       - uses: actions/upload-artifact@master
         with:
-          name: 'rendered_pdf-${{ steps.ghd.outputs.describe }}'
-          path: 'README-${{ steps.ghd.outputs.describe }}.pdf'
+          name: 'rendered_pdf-${{ github.sha }}'
+          path: 'README-${{ github.sha }}.pdf'
