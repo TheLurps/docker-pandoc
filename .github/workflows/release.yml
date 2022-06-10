@@ -32,7 +32,6 @@ jobs:
       - uses: actions/checkout@v2
       - name: Render
         run: |
-          git config --global --add safe.directory /__w/docker-pandoc/docker-pandoc
           pandoc metadata.yml README.md \
             --filter pandoc-citeproc \
             --bibliography=./references.bib \
