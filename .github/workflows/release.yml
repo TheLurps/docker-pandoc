@@ -28,13 +28,13 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     container: thelurps/pandoc:${{github.ref_name}}
+    env:
+      VERSION: ${{ github.sha }}
     steps:
       - uses: actions/checkout@v2
       - name: Render
-        run: |
-          make README.pdf && \
-            mv -v README.pdf README-${{ github.sha }}.pdf
+        run: make all
       - uses: actions/upload-artifact@master
         with:
-          name: 'rendered_pdf-${{ github.sha }}'
-          path: 'README-${{ github.sha }}.pdf'
+          name: 'rendered_pdf-${{ env.VERSION }}'
+          path: 'README-${{ env.VERSION }}.pdf'
