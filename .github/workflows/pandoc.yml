@@ -1,0 +1,21 @@
+name: Pandoc
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: thelurps/pandoc:latest
+    env:
+      VERSION: ${{ github.sha }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Render
+        run: make all
+      - uses: actions/upload-artifact@master
+        with:
+          name: 'rendered_pdf-${{ env.VERSION }}'
+          path: '*-${{ env.VERSION }}.pdf'
