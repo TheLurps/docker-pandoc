@@ -2,6 +2,28 @@
 
 A docker image for generating PDFs from Markdown using Pandoc and Miktex
 
+## Usage
+
+Create docker volume to store Miktex packages
+
+```bash
+docker create --name miktex
+```
+
+Run locally
+
+```bash
+docker run --rm -ti \
+    -v miktex:/miktex/.miktex \
+    -v $(pwd):/miktex/work \
+    -e VERSION=$(git log -1 --format=format:"%H") \
+    -e MIKTEX_GID=$(id -g) \
+    -e MIKTEX_UID=$(id -u) \
+    thelurps/pandoc:latest make all
+```
+
+## More sample text
+
 An unordered listing:
 
 - item a

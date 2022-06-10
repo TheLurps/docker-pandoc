@@ -1,9 +1,10 @@
-name: Build and test
+name: Release
 
 on:
   push:
     branches:
-      - '*'
+      - 'latest'
+      - 'testing'
     tags:
       - 'v*'
 
@@ -27,15 +28,13 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     container: thelurps/pandoc:${{github.ref_name}}
+    env:
+      VERSION: ${{ github.sha }}
     steps:
       - uses: actions/checkout@v2
       - name: Render
-        run: |
-          git config --global --add safe.directory /__w/docker-pandoc/docker-pandoc
-          pandoc metadata.yml README.md \
-            --filter pandoc-citeproc \
-            --bibliography=./references.bib \
-            --output=README-$(git describe --tags --dirty --always).pdf
+        run: make all
       - uses: actions/upload-artifact@master
         with:
-          path: 'README-*.pdf'
+          name: 'rendered_pdf-${{ env.VERSION }}'
+          path: 'README-${{ env.VERSION }}.pdf'
