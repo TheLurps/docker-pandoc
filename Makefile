@@ -6,3 +6,10 @@ $(subst .md,.pdf,$(MD_FILES)):
 	--filter pandoc-citeproc \
 	--bibliography $(BIB_FILES) \
 	--output $@
+
+all:  $(subst .md,.pdf,$(MD_FILES))
+
+default: all
+
+clean:
+	rm -v $(subst .md,.pdf,$(MD_FILES))
