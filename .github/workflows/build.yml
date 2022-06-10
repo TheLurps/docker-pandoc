@@ -32,7 +32,10 @@ jobs:
       - name: Render
         run: |
           git config --global --add safe.directory /__w/docker-pandoc/docker-pandoc
-          pandoc README.md -o README-$(git describe --tags --dirty --always).pdf
+          pandoc metadata.yml README.md \
+            --filter pandoc-citeproc \
+            --bibliography=./references.bib \
+            --output=README-$(git describe --tags --dirty --always).pdf
       - uses: actions/upload-artifact@master
         with:
           path: 'README-*.pdf'
