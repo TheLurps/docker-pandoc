@@ -10,7 +10,7 @@ Create docker volume to store Miktex packages
 docker create --name miktex
 ```
 
-Run locally
+### Run locally
 
 ```bash
 docker run --rm -ti \
@@ -20,6 +20,50 @@ docker run --rm -ti \
     -e MIKTEX_GID=$(id -g) \
     -e MIKTEX_UID=$(id -u) \
     thelurps/pandoc:latest make all
+```
+
+### Run in GitHub
+
+- add `.github/workflows/pandoc.yml`
+
+```yaml
+name: Pandoc
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: thelurps/pandoc:latest
+    env:
+      VERSION: ${{ github.sha }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Render
+        run: make all
+      - uses: actions/upload-artifact@master
+        with:
+          name: 'rendered_pdf-${{ env.VERSION }}'
+          path: '*-${{ env.VERSION }}.pdf'
+```
+
+### Run in GitLab
+
+- add `.gitlab-ci.yml`
+
+```yaml
+build:
+  image: thelurps/pandoc:latest
+  script:
+    - make all
+  variables:
+    VERSION: $CI_COMMIT_SHA 
+  artifacts:
+    paths:
+      - "*-$VERSION.pdf"
 ```
 
 ## More sample text
