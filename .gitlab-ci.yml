@@ -1,0 +1,9 @@
+build:
+  image: thelurps/pandoc:latest
+  script:
+    - make all
+  variables:
+    VERSION: $CI_COMMIT_SHA 
+  artifacts:
+    paths:
+      - "*-$VERSION.pdf"
