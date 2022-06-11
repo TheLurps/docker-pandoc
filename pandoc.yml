@@ -5,4 +5,5 @@ filters:
   - pandoc-fignos
 include-in-header:
   - fignos-includes.tex
+citeproc: true
 ...
