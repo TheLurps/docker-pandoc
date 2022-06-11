@@ -24,7 +24,7 @@ jobs:
         with:
           cabal-version: 'latest'
       - name: Fetch and build citeproc
-        run: wget https://github.com/jgm/citeproc/archive/refs/tags/$CITEPROC_VERSION.tar.gz && tar xzf $CITEPROC_VERSION.tar.gz && cd citeproc-$CITEPROC_VERSION && pwd && mkdir -p $(pwd)/../dist && cabal install -fexecutable --install-method=copy --installdir=$(pwd)/../bin
+        run: wget https://github.com/jgm/citeproc/archive/refs/tags/$CITEPROC_VERSION.tar.gz && tar xzf $CITEPROC_VERSION.tar.gz && cd citeproc-$CITEPROC_VERSION && mkdir -p $(pwd)/../dist && cabal install -fexecutable --install-method=copy --installdir=$(pwd)/../dist
       - uses: actions/upload-artifact@v3
         with:
           name: citeproc
