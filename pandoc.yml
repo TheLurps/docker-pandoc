@@ -1,0 +1,8 @@
+---
+from: markdown+yaml_metadata_block+footnotes+tex_math_dollars+implicit_figures+link_attributes
+to: latex
+filters:
+  - pandoc-fignos
+include-in-header:
+  - fignos-includes.tex
+...

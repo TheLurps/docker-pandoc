@@ -4,5 +4,4 @@ author: ["TheLurps"]
 date: \today
 keywords: [Docker, Pandoc, Latex]
 header-includes: |
-  \usepackage{cleveref}
 ...
