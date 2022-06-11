@@ -3,5 +3,4 @@ title: "A docker image for pandoc"
 author: ["TheLurps"]
 date: \today
 keywords: [Docker, Pandoc, Latex]
-header-includes: |
 ...
