@@ -9,7 +9,6 @@ on:
       - 'v*'
     paths:
       - 'Dockerfile'
-      - 'Makefile'
       - '.github/workflows/release.yml'
   workflow_dispatch:
 
