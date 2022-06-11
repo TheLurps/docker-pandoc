@@ -4,8 +4,7 @@ ENV PANDOC_VERSION="2.18"
 
 RUN apt-get update && \
     apt-get install -y \
-        python3-pip \
-        cabal-install
+        python3-pip
 
 RUN pip3 install pandoc-fignos
 
@@ -13,10 +12,8 @@ ADD https://github.com/jgm/pandoc/releases/download/${PANDOC_VERSION}/pandoc-${P
 
 RUN dpkg -i /tmp/pandoc.deb
 
-COPY citeproc /usr/local/bin/citeproc
+COPY ./citeproc /usr/local/bin/citeproc
 
 RUN rm -rf /tmp/*
-
-RUN apt-get purge -y cabal-install
 
 RUN apt-get autoremove -y
