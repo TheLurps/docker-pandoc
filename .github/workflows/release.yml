@@ -51,7 +51,7 @@ jobs:
           tags: thelurps/pandoc:${{github.ref_name}}
   test:
     name: Test docker image
-    needs: build
+    needs: build_image
     runs-on: ubuntu-latest
     container: thelurps/pandoc:${{github.ref_name}}
     env:
