@@ -16,16 +16,13 @@ jobs:
   build_citeproc:
     runs-on: ubuntu-latest
     env:
-      VERSION: '0.7'
+      CITEPROC_VERSION: '0.7'
     steps:
       - uses: actions/checkout@v3
       - uses: haskell/actions/setup@v2
         with:
           cabal-version: 'latest'
-      - run: |
-        wget https://github.com/jgm/citeproc/archive/refs/tags/$VERSION.tar.gz
-        tar xzf $VERSION.tar.gz -C /tmp
-        cd /tmp/citeproc-$VERSION && cabal install -fexecutable 
+      - run: wget https://github.com/jgm/citeproc/archive/refs/tags/$CITEPROC_VERSION.tar.gz && tar xzf $CITEPROC_VERSION.tar.gz -C /tmp && cd /tmp/citeproc-$CITEPROC_VERSION && cabal install -fexecutable 
   build:
     runs-on: ubuntu-latest
     steps:
