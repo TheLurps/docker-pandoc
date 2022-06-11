@@ -14,6 +14,7 @@ on:
 
 jobs:
   build_citeproc:
+    name: Build citeproc
     runs-on: ubuntu-latest
     env:
       CITEPROC_VERSION: '0.7'
@@ -22,12 +23,22 @@ jobs:
       - uses: haskell/actions/setup@v2
         with:
           cabal-version: 'latest'
-      - run: wget https://github.com/jgm/citeproc/archive/refs/tags/$CITEPROC_VERSION.tar.gz && tar xzf $CITEPROC_VERSION.tar.gz -C /tmp && cd /tmp/citeproc-$CITEPROC_VERSION && cabal install -fexecutable 
-  build:
+      - name: Fetch and build citeproc
+        run: wget https://github.com/jgm/citeproc/archive/refs/tags/$CITEPROC_VERSION.tar.gz && tar xzf $CITEPROC_VERSION.tar.gz -C /tmp && cd /tmp/citeproc-$CITEPROC_VERSION && mkdir -p $GITHUB_PATH/bin && cabal install -fexecutable --install-method=copy --installdir=$GITHUB_PATH/bin
+      - uses: actions/upload-artifact@v3
+        with:
+          name: citeproc
+          path: $GITHUB_PATH/citeproc
+  build_image:
+    name: Build docker image
+    needs: build_citeproc
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+      - uses: actions/download-artifact@v3
+        with:
+          name: citeproc
       - name: Login to DockerHub
         uses: docker/login-action@v2
         with:
@@ -39,13 +50,14 @@ jobs:
           push: true
           tags: thelurps/pandoc:${{github.ref_name}}
   test:
+    name: Test docker image
     needs: build
     runs-on: ubuntu-latest
     container: thelurps/pandoc:${{github.ref_name}}
     env:
       VERSION: ${{ github.sha }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Render
         run: make all
       - uses: actions/upload-artifact@master

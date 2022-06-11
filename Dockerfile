@@ -1,7 +1,6 @@
 FROM miktex/miktex:latest
 
 ENV PANDOC_VERSION="2.18"
-ENV CITEPROC_VERSION="0.7"
 
 RUN apt-get update && \
     apt-get install -y \
@@ -14,13 +13,7 @@ ADD https://github.com/jgm/pandoc/releases/download/${PANDOC_VERSION}/pandoc-${P
 
 RUN dpkg -i /tmp/pandoc.deb
 
-ADD https://github.com/jgm/citeproc/archive/refs/tags/${CITEPROC_VERSION}.tar.gz /tmp/citeproc.tar.gz
-
-RUN tar xzf /tmp/citeproc.tar.gz -C /tmp && \
-    cd /tmp/citeproc-* && \
-    cabal v1-update && \
-    cabal install -fexecutable && \
-    mv /root/.cabal/bin/citeproc /usr/local/bin/
+COPY citeproc /usr/local/bin/citeproc
 
 RUN rm -rf /tmp/*
 
