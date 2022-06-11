@@ -7,3 +7,5 @@ RUN apt-get update && \
         python3-pip
 
 RUN pip3 install pandoc-fignos
+
+COPY Makefile /miktex/work/
