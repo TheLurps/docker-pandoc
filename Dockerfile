@@ -12,7 +12,9 @@ ADD https://github.com/jgm/pandoc/releases/download/${PANDOC_VERSION}/pandoc-${P
 
 RUN dpkg -i /tmp/pandoc.deb
 
-COPY ./citeproc /usr/local/bin/citeproc
+COPY citeproc /usr/local/bin/citeproc
+
+RUN chmod +x /usr/local/bin/citeproc
 
 RUN rm -rf /tmp/*
 
