@@ -16,6 +16,8 @@ COPY citeproc /usr/local/bin/citeproc
 
 RUN chmod +x /usr/local/bin/citeproc
 
+ADD https://raw.githubusercontent.com/tomncooper/pandoc-gls/89d3e716d3778af5d92ce735c9beb1d53826bbb1/pandoc-gls.lua /miktex/pandoc-gls.lua
+
 RUN rm -rf /tmp/*
 
 RUN apt-get autoremove -y

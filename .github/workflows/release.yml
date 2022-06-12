@@ -39,8 +39,6 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: citeproc
-      - name: Fetch pandoc-gls.lua
-        run: wget https://raw.githubusercontent.com/tomncooper/pandoc-gls/89d3e716d3778af5d92ce735c9beb1d53826bbb1/pandoc-gls.lua
       - name: Login to DockerHub
         uses: docker/login-action@v2
         with:
