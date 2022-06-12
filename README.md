@@ -105,4 +105,6 @@ A figure included as PDF file is shown as {+@fig:demo}:
 
 ![A demo figure](fig_demo.pdf){#fig:demo width=50%}
 
-## References
+Some acronyms like \gls{lcm} or \gls{gcd}. And again \gls{lcm} and \gls{gcd}.
+
+# References

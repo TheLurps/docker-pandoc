@@ -4,6 +4,9 @@ to: latex
 filters:
   - pandoc-fignos
 include-in-header:
-  - fignos-includes.tex
+  - fignos-header.tex
+  - glossary-header.tex
 citeproc: true
+include-after-body:
+  - after-body.tex
 ...
