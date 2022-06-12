@@ -31,7 +31,8 @@ name: Pandoc
 
 on:
   push:
-  pull_request:
+    branches:
+      - "main"
   workflow_dispatch:
 
 jobs:
@@ -57,6 +58,8 @@ jobs:
 ```yaml
 build:
   image: thelurps/pandoc:latest
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
   script:
     - make all
   variables:
@@ -89,4 +92,22 @@ for e in elements:
 
 This is a sample citation @dominici2014overview.
 
-## References
+A formular using Markdown inline math: $f(x) = x^2$
+
+A formular using Markdown outline math:
+
+$$F(x) = \int^a_b \frac{1}{3} X^3$$
+
+A full blown \LaTeX equation is shown in equation \ref{eq:demo}:
+
+\begin{equation}\label{eq:demo}
+E_r = E_t \cdot C_t \cdot C_r \cdot d^{-2} \cdot e^{-2 \, b \, d} \cdot \cos{\vartheta} \cdot f(c_s)
+\end{equation}
+
+A figure included as PDF file is shown as {+@fig:demo}:
+
+![A demo figure](fig_demo.pdf){#fig:demo width=50%}
+
+Some acronyms like (+lcm) or (+gcd). And again (+lcm) and (+gcd).
+
+# References
