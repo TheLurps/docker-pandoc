@@ -3,6 +3,7 @@ from: markdown+yaml_metadata_block+footnotes+tex_math_dollars+implicit_figures+l
 to: latex
 filters:
   - pandoc-fignos
+  - pandoc-gls.lua
 include-in-header:
   - fignos-header.tex
   - glossary-header.tex

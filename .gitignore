@@ -1,3 +1,4 @@
 README-*.pdf
 .vscode/
 citeproc
+pandoc-gls.lua
