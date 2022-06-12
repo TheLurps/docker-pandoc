@@ -31,7 +31,8 @@ name: Pandoc
 
 on:
   push:
-  pull_request:
+    branches:
+      - "main"
   workflow_dispatch:
 
 jobs:
@@ -57,6 +58,8 @@ jobs:
 ```yaml
 build:
   image: thelurps/pandoc:latest
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
   script:
     - make all
   variables:
