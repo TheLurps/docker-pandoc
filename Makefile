@@ -3,7 +3,7 @@ MD_FILES := $(wildcard *.md)
 DEFAULTS := 'pandoc.yml'
 
 $(subst .md,-$(VERSION).pdf,$(MD_FILES)):
-	@if [ -z $(TEMPLATE) && -z $(TO) ]; then\
+	@if [ -z $(TEMPLATE) ] && [ -z $(TO) ]; then\
 		pandoc $(subst -$(VERSION).pdf,.yml,$@) $(subst -$(VERSION).pdf,.md,$@) \
 		--defaults $(DEFAULTS) \
 		--bibliography $(BIB_FILES) \
