@@ -3,7 +3,7 @@ name: Pandoc
 on:
   push:
     branches:
-      - "16-allow-usage-of-templates-as-submodule"
+      - "main"
   workflow_dispatch:
 
 jobs:
