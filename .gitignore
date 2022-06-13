@@ -1,4 +1,6 @@
-README-*.pdf
 .vscode/
+README-*.pdf
+beamer-*.pdf
 citeproc
+eisvogel-*.pdf
 pandoc-gls.lua

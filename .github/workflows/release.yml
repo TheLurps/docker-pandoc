@@ -65,6 +65,7 @@ jobs:
         run: |
           make README-$VERSION.pdf
           TEMPLATE="./eisvogel-template/eisvogel.tex" make eisvogel-$VERSION.pdf
+          TO="beamer" make beamer-$VERSION.pdf
       - uses: actions/upload-artifact@master
         with:
           name: 'rendered_pdf-${{ env.VERSION }}'
