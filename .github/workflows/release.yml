@@ -59,8 +59,12 @@ jobs:
       VERSION: ${{ github.sha }}
     steps:
       - uses: actions/checkout@v3
+        with:
+          submodules: 'true'
       - name: Render
-        run: make all
+        run: |
+          make README-$VERSION.pdf
+          TEMPLATE="./eisvogel-template/eisvogel.tex" make eisvogel-$VERSION.pdf
       - uses: actions/upload-artifact@master
         with:
           name: 'rendered_pdf-${{ env.VERSION }}'
