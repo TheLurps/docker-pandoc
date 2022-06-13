@@ -4,7 +4,8 @@ ENV PANDOC_VERSION="2.18"
 
 RUN apt-get update && \
     apt-get install -y \
-        python3-pip
+        python3-pip \
+        git
 
 RUN pip3 install pandoc-fignos
 
